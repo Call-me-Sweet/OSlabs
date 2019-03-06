@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AM_HOME	Makefile	/^export AM_HOME := $(PWD)\/..\/abstract-machine$/;"	m
+ARCH	Makefile	/^export ARCH := x86-qemu$/;"	m
+KEYNAME	src/game.c	20;"	d	file:
+NAME	Makefile	/^NAME := amgame$/;"	m
+SIDE	include/game.h	4;"	d
+SRCS	Makefile	/^SRCS := $(shell find -L .\/src\/ -name "*.c")$/;"	m
+TASK	Makefile	/^export TASK    := L0$/;"	m
+draw_rect	src/game.c	/^void draw_rect(int x, int y, int w, int h, uint32_t color) {$/;"	f
+h	src/game.c	/^int w, h;$/;"	v
+init_screen	src/game.c	/^void init_screen() {$/;"	f
+main	src/game.c	/^int main() {$/;"	f
+puts	include/game.h	/^static inline void puts(const char *s) {$/;"	f
+read_key	src/game.c	/^void read_key() {$/;"	f
+splash	src/game.c	/^void splash() {$/;"	f
+w	src/game.c	/^int w, h;$/;"	v
