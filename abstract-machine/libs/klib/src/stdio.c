@@ -1,72 +1,273 @@
 #include "klib.h"
 #include <stdarg.h>
 #include <stdlib.h>
+#include "ctype.h"
+#include <string.h>
 
+extern int vsprintf(char *buf, const char *fmt, va_list args);
 
 //#ifndef __ISA_NATIVE__
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
-static int cnt;
-static int cntvs;
-static int cnts;
-static int cntsn;
-
-static void itos(char s[],int x)
+unsigned long simple_strtoul(const char *cp,char **endp,unsigned int base)
 {
-    int a[20];
-    int num=0;
-    while(x/10!=0)
-    {
-        int y=x%10;
-        a[num++]=y;
-        x=x/10;
+    unsigned long result = 0,value;
+
+    if (!base) {
+        base = 10;
+        if (*cp == '0') {
+            base = 8;
+            cp++;
+            if ((*cp == 'x') && isxdigit(cp[1])) {
+                cp++;
+                base = 16;
+            }
+        }
     }
-    a[num]=x;
-   
-    for(int i=0;i<=num;i++)
-    {
-        s[i]=a[num-i]+'0';
+    while (isxdigit(*cp) && (value = isdigit(*cp) ? *cp-'0' : (islower(*cp)
+        ? toupper(*cp) : *cp)-'A'+10) < base) {
+        result = result*base + value;
+        cp++;
     }
-    s[num+1]='\0';
-    return;
+    if (endp)
+        *endp = (char *)cp;
+    return result;
 }
 
-static void utos(char s[],uint32_t u)
-{
-    uint32_t a[20];
-    int num=0;
-    while(u/10!=0)
-    {
-        uint32_t v=u%10;
-        a[num++]=v;
-        u=u/10;
-    }
-    a[num]=u;
+/* we use this so that we can do without the ctype library */
+#define is_digit(c)    ((c) >= '0' && (c) <= '9')
 
-    for(int i=0;i<=num;i++)
-    {
-        s[i]=a[num-i]+'0';
-    }
-    s[num+1]='\0';
-    return;
+static int skip_atoi(const char **s)
+{
+    int i=0;
+
+    while (is_digit(**s))
+        i = i*10 + *((*s)++) - '0';
+    return i;
 }
 
-static void stoi(char s[],int n)
+#define ZEROPAD    1        /* pad with zero */
+#define SIGN       2        /* unsigned/signed long */
+#define PLUS       4        /* show plus */
+#define SPACE      8        /* space if plus */
+#define LEFT      16        /* left justified */
+#define SPECIAL   32        /* 0x */
+#define SMALL     64        /* use 'abcdef' instead of 'ABCDEF' */
+
+#define do_div(n,base) ({ \
+int __res; \
+__asm__("divl %4":"=a" (n),"=d" (__res):"0" (n),"1" (0),"r" (base)); \
+__res; })
+
+static char * number(char * str, int num, int base, int size, int precision
+    ,int type)
 {
-   int index=0;
-   while(s[index]!='\0')
-   {
-       n=n*10+s[index]-'0';
-       index++;
-   }
-   return;
+    char c,sign,tmp[36];
+    const char *digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int i;
+    if (type&SMALL) digits="0123456789abcdefghijklmnopqrstuvwxyz";
+    if (type&LEFT) type &= ~ZEROPAD;
+    if (base<2 || base>36)
+        return 0;
+    c = (type & ZEROPAD) ? '0' : ' ' ;
+    if (type&SIGN && num<0) {
+        sign='-';
+        num = -num;
+    } else
+        sign=(type&PLUS) ? '+' : ((type&SPACE) ? ' ' : 0);
+    if (sign) size--;
+    if (type&SPECIAL) {
+        if (base==16) 
+            size -= 2;
+        else if (base==8) 
+            size--;
+    }
+    i=0;
+    if (num==0)
+        tmp[i++]='0';
+    else while (num!=0)
+        tmp[i++]=digits[do_div(num,base)];
+    if (i>precision) precision=i;
+    size -= precision;
+    if (!(type&(ZEROPAD+LEFT)))
+        while(size-->0)
+            *str++ = ' ';
+    if (sign)
+        *str++ = sign;
+    if (type&SPECIAL) {
+        if (base==8)
+            *str++ = '0';
+        else if (base==16) {
+            *str++ = '0';
+            *str++ = digits[33];
+        }
+    }
+    if (!(type&LEFT))
+        while(size-->0)
+            *str++ = c;
+    while(i<precision--)
+        *str++ = '0';
+    while(i-->0)
+        *str++ = tmp[i];
+    while(size-->0)
+        *str++ = ' ';
+    return str;
+}
+
+int vsprintf(char *buf, const char *fmt, va_list args)
+{
+    int len;
+    int i;
+    char * str;
+    char *s;
+    int *ip;
+
+    int flags;            /* flags to number() */
+
+    int field_width;      /* width of output field */
+    int precision;        /* min. # of digits for integers; max
+                             number of chars for from string */
+    //int qualifier;        /* 'h', 'l', or 'L' for integer fields */
+
+    for (str=buf ; *fmt ; ++fmt) {
+        if (*fmt != '%') {
+            //_putc(*str);
+            *str++ = *fmt;
+            continue;
+        }
+            
+        /* process flags */
+        flags = 0;
+        repeat:
+            ++fmt;        /* this also skips first '%' */
+            switch (*fmt) {
+                case '-': flags |= LEFT; goto repeat;
+                case '+': flags |= PLUS; goto repeat;
+                case ' ': flags |= SPACE; goto repeat;
+                case '#': flags |= SPECIAL; goto repeat;
+                case '0': flags |= ZEROPAD; goto repeat;
+                }
+        /* get field width */
+        field_width = -1;
+        if (is_digit(*fmt))
+            field_width = skip_atoi(&fmt);
+        else if (*fmt == '*') {
+            /* it's the next argument */
+            field_width = va_arg(args, int);
+            if (field_width < 0) {
+                field_width = -field_width;
+                flags |= LEFT;
+            }
+        }
+        /* get the precision */
+        precision = -1;
+        if (*fmt == '.') {
+            ++fmt;    
+            if (is_digit(*fmt))
+                precision = skip_atoi(&fmt);
+            else if (*fmt == '*') {
+                /* it's the next argument */
+                precision = va_arg(args, int);
+            }
+            if (precision < 0)
+                precision = 0;
+        }
+        /* get the conversion qualifier */
+        //qualifier = -1;
+        if (*fmt == 'h' || *fmt == 'l' || *fmt == 'L') {
+            //qualifier = *fmt;
+            ++fmt;
+        }
+        switch (*fmt) {
+        case 'c':
+            if (!(flags & LEFT))
+                while (--field_width > 0)
+                    *str++ = ' ';
+            *str++ = (unsigned char) va_arg(args, int);
+            while (--field_width > 0)
+                *str++ = ' ';
+            break;
+        case 's':
+            s = va_arg(args, char *);
+            if (!s)
+                s = "<NULL>";
+            len = strlen(s);
+            if (precision < 0)
+                precision = len;
+            else if (len > precision)
+                len = precision;
+
+            if (!(flags & LEFT))
+                while (len < field_width--)
+                    *str++ = ' ';
+            for (i = 0; i < len; ++i)
+                *str++ = *s++;
+            while (len < field_width--)
+                *str++ = ' ';
+            break;
+        case 'o':
+            str = number(str, va_arg(args, unsigned long), 8,
+                field_width, precision, flags);
+            break;
+        case 'p':
+            if (field_width == -1) {
+                field_width = 8;
+                flags |= ZEROPAD;
+            }
+            str = number(str,
+                (unsigned long) va_arg(args, void *), 16,
+                field_width, precision, flags);
+            break;
+        case 'x':
+            flags |= SMALL;
+        case 'X':
+            str = number(str, va_arg(args, unsigned long), 16,
+                field_width, precision, flags);
+            break;
+        case 'd':
+        case 'i':
+            flags |= SIGN;
+        case 'u':
+            str = number(str, va_arg(args, unsigned long), 10,
+                field_width, precision, flags);
+            break;
+        case 'n':
+            ip = va_arg(args, int *);
+            *ip = (str - buf);
+            break;
+        default:
+            if (*fmt != '%')
+                *str++ = '%';
+            if (*fmt)
+                *str++ = *fmt;
+            else
+                --fmt;
+            break;
+        }
+    }
+    *str = '\0';
+    //_putc(str - buf + '0');
+    //_putc('\n');
+    return str-buf;
+}
+
+int sprintf(char * buf, const char *fmt, ...)
+{
+    va_list args;
+    int i;
+
+    va_start(args, fmt);
+    i=vsprintf(buf,fmt,args);
+    va_end(args);
+    return i;
 }
 
 int printf(const char *fmt, ...) {
+    int cnt;
     assert(fmt);
     va_list ap;
     va_start(ap,fmt);
-    char s[200];
+    char s[5024];
     cnt=vsprintf(s,fmt,ap);
     for(int i=0;;i++)
     {
@@ -76,442 +277,6 @@ int printf(const char *fmt, ...) {
     }
     va_end(ap);
     return cnt;
-}
-
-int sprintf(char *out, const char *fmt,...){
-   assert(fmt);
-   va_list ap;
-   va_start(ap,fmt);
-   cnts=vsprintf(out,fmt,ap);
-   va_end(ap);
-   return cnts;
-}
-
-int vsprintf(char *out, const char *fmt, va_list ap) {
-    assert(fmt);
- 
-    char hextable_x[16]="0123456789abcdef";
-    //char hextable_X[16]="0123456789ABCDEF";
-
-    cntvs=0;
-    const char *str=fmt;
-    char *tem=NULL;
-    char temp[50];
-    char s[50];
-    int x;
-    uint32_t u;
-    long y;//addr maybe 64
-    int flag=0;
-    memset(out,0,sizeof(out));
-
-    char num[20];
-    int k,n=0;//k is the len of con-wid and n is the num of con-wid
-
-    while((*str)!='\0')
-    {
-        if(*str=='%')
-        {
-            str++;
-            //control width
-            while(*str==48)
-            {
-                flag=1;
-                str++;
-            }
-            k=0;
-            memset(num,0,sizeof(num));
-            while(*str>48&&*str<=57)
-            {
-               num[k]=*str;
-               k++;
-               str++;
-            }
-            if(num[0]!='\0')
-            {
-                stoi(num,n);
-            }
-
-// begin to check what to print
-            switch(*str)
-            {
-                default : assert(0);
-                case 'p':{
-                             if(sizeof(void*)==4)
-                             {
-                             y=(long)va_arg(ap,void*);
-                             temp[8]='\0';
-                             tem=&temp[8];
-                             for(int i=0;i<8;++i)
-                             {
-                                 *(--tem)=hextable_x[y&0x0f];
-                                 y>>=4;
-                             }
-                             s[0]='0';
-                             s[1]='x';
-                             s[2]='\0';
-                             strcat(out,s);
-                             strcat(out,temp);
-                             cntvs+=strlen(s)+strlen(temp);
-                             }
-                             else if(sizeof(void*)==8)
-                             {
-                                y=(long)va_arg(ap,void*);
-                                temp[16]='\0';
-                                tem=&temp[16];
-                                for(int i=0;i<16;++i)
-                                {
-                                    *(--tem)=hextable_x[y&0x0f];
-                                    y>>=4;
-                                }
-                                s[0]='0';
-                                s[1]='x';
-                                s[2]='\0';
-                                strcat(out,s);
-                                strcat(out,temp);
-                                cntvs+=strlen(s)+strlen(temp);
-                             }
-                             break;
-                         }
-                case 's':{
-                             tem=va_arg(ap,char*);
-                             if(flag)
-                             {
-                                if(strlen(tem)>=n)
-                                {
-                                   strcat(out,tem);
-                                   cntvs+=strlen(tem);
-                                }
-                                else
-                                {
-                                    char s1[10]="";
-                                    for(int i=0;i<n-strlen(tem);i++)
-                                        s1[i]='0';
-                                    s1[n-strlen(tem)]='\0';
-                                    strcat(out,s1);
-                                    cntvs+=strlen(s1);
-                                    strcat(out,tem);
-                                    cntvs+=strlen(tem);
-                                }
-                             }
-                             else
-                             {
-                                if(strlen(tem)>=n)
-                                {
-                                   strcat(out,tem);
-                                   cntvs+=strlen(tem);
-                                }
-                                else
-                                {
-                                    char s1[10]="";
-                                    for(int i=0;i<n-strlen(tem);i++)
-                                        s1[i]=' ';
-                                    s1[n-strlen(tem)]='\0';
-                                    strcat(out,s1);
-                                    cntvs+=strlen(s1);
-                                    strcat(out,tem);
-                                    cntvs+=strlen(tem);
-                                }
-                             }
-                             break;
-                         }
-                case 'u':{
-                             memset(s,0,sizeof(s));
-                             memset(temp,0,sizeof(temp));
-                             u=va_arg(ap,uint32_t);
-                             utos(s,u);
-                             if(flag)
-                             {
-                                 if(strlen(s)>n)
-                                 {
-                                     strcat(out,s);
-                                     cntvs+=strlen(s);
-                                 }
-                                 else
-                                 {
-                                        char s1[10]="";
-                                        for(int i=0;i<n-strlen(s);i++)
-                                            s1[i]='0';
-                                        s1[n-strlen(s)]='\0';
-                                        strcat(out,s1);
-                                        cntvs+=strlen(s1);
-                                        strcat(out,s);
-                                        cntvs+=strlen(s);
-                                 }
-                             }
-                             else
-                             {
-                                     if(strlen(s)>=n)
-                                     {
-                                         strcat(out,s);
-                                         cntvs+=strlen(s);
-                                     }
-                                     else
-                                     {
-                                        char s1[10]="";
-                                        for(int i=0;i<n-strlen(s);i++)
-                                            s1[i]=' ';
-                                        s1[n-strlen(s)]='\0';
-                                        strcat(out,s1);
-                                        cntvs+=strlen(s1);
-                                        strcat(out,s);
-                                        cntvs+=strlen(s);
-                                     }
-                             }
-                             break;
-                         }
-                case 'd':{
-                             memset(s,0,sizeof(s));
-                             memset(temp,0,sizeof(temp));
-                             x=va_arg(ap,int);
-                             if(x==-2147483648)
-                             {
-                                 //not consider width!!!
-                                 strcpy(temp,"-2147483648");
-                                 strcat(out,temp);
-                                 cntvs+=strlen(temp);
-                             }
-                             else if(x<0)
-                             {
-                                 x=-x;
-                                 temp[0]='-';
-                                 strcat(out,temp);
-                                 cntvs++;
-                                 n--;
-                                 itos(s,x);
-                                 if(flag)
-                                 {
-                                     if(strlen(s)>=n)
-                                     {
-                                         strcat(out,s);
-                                         cntvs+=strlen(s);
-                                     }
-                                     else
-                                     {
-                                        char s1[10]="";
-                                        for(int i=0;i<n-strlen(s);i++)
-                                            s1[i]='0';
-                                        s1[n-strlen(s)]='\0';
-                                        strcat(out,s1);
-                                        cntvs+=strlen(s1);
-                                        strcat(out,s);
-                                        cntvs+=strlen(s);
-                                     }
-                                 }
-                                 else
-                                 {
-                                     if(strlen(s)>=n)
-                                     {
-                                         strcat(out,s);
-                                         cntvs+=strlen(s);
-                                     }
-                                     else
-                                     {
-                                        char s1[10]="";
-                                        for(int i=0;i<n-strlen(s);i++)
-                                            s1[i]=' ';
-                                        s1[n-strlen(s)]='\0';
-                                        strcat(out,s1);
-                                        cntvs+=strlen(s1);
-                                        strcat(out,s);
-                                        cntvs+=strlen(s);
-                                     }
-                                 }
-                             }
-                             else
-                             {
-                                 itos(s,x);
-                                 if(flag)
-                                 {
-                                     if(strlen(s)>=n)
-                                     {
-                                         strcat(out,s);
-                                         cntvs+=strlen(s);
-                                     }
-                                     else
-                                     {
-                                        char s1[10]="";
-                                        for(int i=0;i<n-strlen(s);i++)
-                                            s1[i]='0';
-                                        s1[n-strlen(s)]='\0';
-                                        strcat(out,s1);
-                                        cntvs+=strlen(s1);
-                                        strcat(out,s);
-                                        cntvs+=strlen(s);
-                                     }
-                                 }
-                                 else
-                                 {
-                                     if(strlen(s)>=n)
-                                     {
-                                         strcat(out,s);
-                                         cntvs+=strlen(s);
-                                     }
-                                     else
-                                     {
-                                        char s1[10]="";
-                                        for(int i=0;i<n-strlen(s);i++)
-                                            s1[i]=' ';
-                                        s1[n-strlen(s)]='\0';
-                                        strcat(out,s1);
-                                        cntvs+=strlen(s1);
-                                        strcat(out,s);
-                                        cntvs+=strlen(s);
-                                     }
-                                 }
-                             }    
-                             break;
-                         }
-                case 'c':{
-                            tem=va_arg(ap,char*);
-                            assert(strlen(tem)==1);
-
-                             if(flag)
-                             {
-                                if(strlen(tem)>=n)
-                                {
-                                   strcat(out,tem);
-                                   cntvs+=strlen(tem);
-                                }
-                                else
-                                {
-                                    char s1[10]="";
-                                    for(int i=0;i<n-strlen(tem);i++)
-                                        s1[i]='0';
-                                    s1[n-strlen(tem)]='\0';
-                                    strcat(out,s1);
-                                    cntvs+=strlen(s1);
-                                    strcat(out,tem);
-                                    cntvs+=strlen(tem);
-                                }
-                             }
-                             else
-                             {
-                                if(strlen(tem)>=n)
-                                {
-                                   strcat(out,tem);
-                                   cntvs+=strlen(tem);
-                                }
-                                else
-                                {
-                                    char s1[10]="";
-                                    for(int i=0;i<n-strlen(tem);i++)
-                                        s1[i]=' ';
-                                    s1[n-strlen(tem)]='\0';
-                                    strcat(out,s1);
-                                    cntvs+=strlen(s1);
-                                    strcat(out,tem);
-                                    cntvs+=strlen(tem);
-                                }
-                             }
-                            break;
-                         }
-            }
-            str++;
-        }
-        else
-        {
-            char ss[2];
-            memset(ss,0,sizeof(ss));
-            ss[0]=*str;
-            ss[1]='\0';
-            strcat(out,ss);
-            cntvs++;
-            str++;
-        }
-    } 
-    return cntvs;
-}
-
-/*
-int sprintf(char *out, const char *fmt,...){
-    assert(fmt);
-    va_list ap;
-    va_start(ap,fmt);
-    cnts=0;
-    const char *str=fmt;
-    char *tem=NULL;
-    char temp[50];
-    char s[50];
-    int x;
-    memset(out,0,sizeof(out));
-
-    while((*str)!='\0')
-    {
-        if(*str=='%')
-        {
-            str++;
-            switch(*str)
-            {
-                case 's':{
-                            tem=va_arg(ap,char*);
-                            strcat(out,tem);
-                            cnts+=strlen(tem);
-                            break;
-                         }
-                        
-                case 'd': {
-                               memset(s,0,sizeof(s));
-                               memset(temp,0,sizeof(temp));
-                               x=va_arg(ap,int);
-                               if(x==-2147483648)
-                               {
-                                    strcpy(temp,"-2147483648");
-                                    strcat(out,temp);
-                                    cnts+=strlen(temp);
-                               }
-                               else if(x<0)
-                               {
-                                  x=-x;
-                                  temp[0]='-';
-                                  itos(s,x);
-                                  strcat(temp,s);
-                                  strcat(out,temp);
-                                  cnts+=strlen(temp);
-                                 
-                               }
-                               else 
-                               {
-                                   itos(s,x);
-                                   strcat(out,s);
-                                   cnts+=strlen(s);
-                               }
-                               break;
-                          }
-            }
-            str++;
-        }
-        else
-        {
-           memset(temp,0,sizeof(temp));
-           temp[0]=*str;
-           temp[1]='\0';
-           strcat(out,temp);
-           cnts++;
-           str++;
-        }
-            
-    }
-    va_end(ap);
-    return cnts;
-}
-*/
-
-int snprintf(char *out, size_t n, const char *fmt, ...) {
-    assert(fmt);
-    va_list ap;
-    va_start(ap,fmt);
-    char tem[2048];
-    int cc = vsprintf(tem,fmt,ap);
-    va_end(ap);
-    if(cc>n){
-        strncpy(out,tem,n);
-        cntsn = n;
-    }
-    else{
-        strncpy(out,tem,n);
-        cntsn = cc;
-    }
-    return cntsn;
 }
 
 #endif

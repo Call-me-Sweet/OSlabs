@@ -1,0 +1,9538 @@
+Building kernel [x86-qemu] with AM_HOME {/home/jarviszly/os/os-workbench/kernel/../abstract-machine}
++ CC framework/main.c
++ CC src/devices/tty/tty.c
++ CC src/devices/video/fonts/default.c
++ CC src/devices/video/fonts/serif.c
++ CC src/devices/video/fonts/sans.c
++ CC src/devices/video/video.c
++ CC src/devices/dev.c
++ CC src/devices/input/input.c
++ CC src/devices/input/keymaps.c
++ CC src/devices/ramdisk/ramdisk.c
++ AS src/devices/ramdisk/initrd.S
++ CC src/spinlock.c
++ CC src/alloc.c
++ CC src/kmthread.c
++ CC src/os.c
++ CC src/sem.c
+Building lib-am [x86-qemu]
+Building lib-klib [x86-qemu]
+Building lib-compiler-rt [x86-qemu]
+Creating binary image [x86-qemu]
+Building bootblock [x86-qemu]
++ LD -> build/kernel-x86-qemu.o
++ CREATE -> build/kernel-x86-qemu
+qemu-system-i386 -smp 4 -serial stdio -machine accel=kvm:tcg -drive format=raw,file=build/kernel-x86-qemu
+ev:0 seq:-2147483648
+
+ev:0 seq:-2147483648
+ev:0 seq:2147483647
+
+tcpu:0
+proceduer1:
+
+tcpu:1
+consumer1:
+
+tcpu:2
+proceduer2:
+
+tcpu:3
+consumer2:
+
+tcpu:0
+proceduer1:
+zombie:
+
+tcpu:1
+consumer1:
+zombie:
+
+tcpu:2
+proceduer2:
+zombie:
+
+tcpu:3
+consumer2:
+zombie:
+
+begins: 1
+switch from:
+task: consumer1:   0
+switch to:consumer1
+end
+wait!
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:
+task: proceduer1:   0
+switch to:proceduer1
+end
+begins: 2
+switch from:proceduer2
+wait!
+( task: zombie:   0
+signal!
+wait!
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+wait!
+ta) sk: proceduer1:   2
+signal!
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:consumer2
+wait!
+( signal!
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+wait!
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+) begins: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+switch to:proceduer1
+end
+begin( s: 2
+switch from:proceduer2
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+switch to:consumer2
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+beg) ins: 2
+switch from:zombie
+signal!
+task: proceduer2:   2
+wait!
+switch to:proceduer2
+end
+begi(n s: 1
+switch from:consumer1
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begi) ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+begi( ns: 3
+switch from:consumer2
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+beg)i ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begin( s: 3
+switch from:consumer2
+signal!
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+wait!
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+beg)i ns: 0
+switch from:zombie
+task: proceduer1:   2
+signal!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+begin(s : 3
+switch from:zombie
+signal!
+task: consumer2:   0
+wait!
+switch to:consumer2
+end
+begins: 0
+switch from:proceduer1
+wait!
+ta)s k: zombie:   0
+signal!
+switch to:zombie
+end
+wait!
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+beg(i ns: 3
+switch from:zombie
+signal!
+task: consumer2:   0
+wait!
+switch to:consumer2
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begi) ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+switch to:proceduer1
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+( begins: 3
+switch from:zombie
+signal!
+task: consumer2:   0
+wait!
+switch to:consumer2
+end
+begins: 2
+switch from:zombie
+wait!
+)t ask: proceduer2:   2
+signal!
+task: zombie:   1
+wait!
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begin(s : 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begi) ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+( begins: 3
+switch from:consumer2
+signal!
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+begins: 3
+switch from:zombie
+wait!
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+beg)i ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+beg( ins: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begi)ns: 0
+sw itch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+begi(n s: 3
+switch from:consumer2
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+beg) ins: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begin(s : 1
+switch from:zombie
+signal!
+task: consumer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begin)s : 0
+switch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+begins: 3
+s(w itch from:consumer2
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begin)s : 3
+switch from:zombie
+signal!
+task: consumer2:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+beg( ins: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begi)n s: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+switch to:proceduer1
+end
+begi(n s: 3
+switch from:consumer2
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+beg) ins: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+beg(i ns: 3
+switch from:zombie
+signal!
+task: consumer2:   0
+wait!
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begin)s : 0
+switch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+( begins: 3
+switch from:consumer2
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+beg)i ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+beg(i ns: 3
+switch from:zombie
+signal!
+task: consumer2:   0
+wait!
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begi) ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+( begins: 3
+switch from:consumer2
+signal!
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+begins: 3
+switch from:zombie
+wait!
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+) begins: 2
+switch from:zombie
+signal!
+task: proceduer2:   0
+wait!
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+beg(i ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begi)n s: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+switch to:proceduer1
+end
+beg(i ns: 1
+switch from:zombie
+signal!
+task: consumer1:   0
+wait!
+switch to:consumer1
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begi)n s: 2
+switch from:zombie
+signal!
+task: proceduer2:   0
+wait!
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begin(s : 1
+switch from:zombie
+signal!
+task: consumer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begi) ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+begi(n s: 3
+switch from:consumer2
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+beg)i ns: 3
+switch from:zombie
+signal!
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+wait!
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begi( ns: 1
+switch from:zombie
+signal!
+task: consumer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begi) ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+begi(n s: 3
+switch from:consumer2
+signal!
+wait!
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+beg) ins: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+beg(i ns: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begin)s : 0
+switch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+beg(i ns: 2
+switch from:proceduer2
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+switch to:consumer1
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+beg) ins: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+beg(in s: 3
+switch from:zombie
+signal!
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begin)s : 0
+switch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+beg(i ns: 1
+switch from:zombie
+signal!
+task: consumer1:   0
+wait!
+switch to:consumer1
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 1
+switch from:consumer1
+wait!
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begi)n s: 0
+switch from:zombie
+signal!
+task: proceduer1:   0
+wait!
+switch to:proceduer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+beg(i ns: 1
+switch from:consumer1
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begin)s : 0
+switch from:proceduer1
+signal!
+task: zombie:   0
+wait!
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begin(s : 3
+switch from:zombie
+signal!
+task: consumer2:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+beg) ins: 3
+switch from:zombie
+signal!
+task: consumer2:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+begi(n s: 3
+switch from:zombie
+signal!
+task: consumer2:   0
+wait!
+switch to:consumer2
+end
+beg)i ns: 2
+switch from:zombie
+signal!
+task: proceduer2:   0
+wait!
+switch to:proceduer2
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begi( ns: 1
+switch from:zombie
+signal!
+task: consumer1:   0
+wait!
+switch to:consumer1
+end
+beg)i ns: 3
+switch from:zombie
+signal!
+task: consumer2:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+begins:(  1
+switch from:consumer1
+signal!
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   0
+switch to:proceduer1
+end
+begins: 3
+switch from:zombie
+wait!
+task: consumer2:   0
+switch to:consumer2
+end
+begins: 0
+switch from:proceduer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   0
+switch to:consumer2
+end
+begi)n s: 0
+switch from:zombie
+signal!
+task: proceduer1:   2
+wait!
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:consumer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins(:  0
+switch from:zombie
+signal!
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:zombie
+task: consumer1:   0
+switch to:consumer1
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 1
+switch from:consumer1
+task: zombie:   0
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:zombie
+task: proceduer2:   0
+switch to:proceduer2
+end
+begins: 0
+switch from:zombie
+wait!
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 2
+switch from:proceduer2
+task: zombie:   0
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 0
+switch from:zombie
+task: proceduer1:   2
+task: zombie:   1
+switch to:zombie
+end
+begins: 3
+switch from:zombie
+task: consumer2:   2
+task: zombie

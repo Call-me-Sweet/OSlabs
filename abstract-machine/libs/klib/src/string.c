@@ -150,4 +150,23 @@ int memcmp(const void* s1, const void* s2, size_t n){
     return just;
 }
 
+void *memmove(void* dest, const void *src, size_t n){
+    char *dest_tmp = (char*)dest;
+    char *src_tmp = (char*)src;
+    assert(dest_tmp&&src_tmp);
+    if((src_tmp > dest_tmp) || (src_tmp + n <= dest_tmp)){
+        while(n--){
+            *dest_tmp++ = *src_tmp++;   
+        }
+    }
+    else{
+        dest_tmp += n-1;
+        src_tmp += n-1;
+        while(n--){
+            *dest_tmp-- = *src_tmp--;
+        }
+    }
+    return dest;
+}
+
 #endif

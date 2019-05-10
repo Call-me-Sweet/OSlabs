@@ -49,7 +49,7 @@ typedef struct Proc{
     struct Proc *ktail;
     struct Proc *next;
 }proc;
-proc nodes[40000];
+proc nodes[400000];
 
 void do_pstree()
 {

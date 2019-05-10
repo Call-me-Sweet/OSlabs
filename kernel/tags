@@ -1,0 +1,281 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AM_HOME	Makefile	/^export AM_HOME := $(PWD)\/..\/abstract-machine$/;"	m
+ARCH	Makefile	/^export ARCH := x86-qemu$/;"	m
+CORRECTNESS_FIRST	include/my_os.h	5;"	d
+CREATE	src/devices/dev.c	42;"	d	file:
+DEVICES	src/devices/dev.c	6;"	d	file:
+DEV_CNT	src/devices/dev.c	16;"	d	file:
+HL	include/my_kmt.h	/^typedef struct HL{$/;"	s
+HandlerList	include/my_kmt.h	/^}HandlerList;$/;"	t	typeref:struct:HL
+INC_DIR	Makefile	/^INC_DIR        := include\/ framework\/$/;"	m
+INIT	src/devices/dev.c	45;"	d	file:
+INT_MAX	include/my_kmt.h	16;"	d
+INT_MIN	include/my_kmt.h	17;"	d
+LEN	include/my_os.h	11;"	d
+LENGTH	include/devices.h	7;"	d
+MODULE	framework/kernel.h	/^} MODULE(dev);$/;"	t	typeref:struct:__anon4
+MODULE	framework/kernel.h	/^} MODULE(kmt);$/;"	t	typeref:struct:__anon3
+MODULE	framework/kernel.h	/^} MODULE(os);\/\/mod_os_t$/;"	t	typeref:struct:__anon1
+MODULE	framework/kernel.h	/^} MODULE(pmm);\/\/mod_ppm_t$/;"	t	typeref:struct:__anon2
+MODULE	framework/kernel.h	7;"	d
+MODULE_DEF	framework/kernel.h	10;"	d
+MODULE_DEF	src/alloc.c	/^MODULE_DEF(pmm) {$/;"	f
+MODULE_DEF	src/devices/dev.c	/^MODULE_DEF(dev) {$/;"	f
+MODULE_DEF	src/kmthread.c	/^MODULE_DEF(kmt){$/;"	f
+MODULE_DEF	src/os.c	/^MODULE_DEF(os) {$/;"	f
+NAME	Makefile	/^NAME           := kernel$/;"	m
+NEVENTS	src/devices/input/input.c	3;"	d	file:
+NSPRITE	src/devices/video/video.c	4;"	d	file:
+NTEXTURE	src/devices/video/video.c	3;"	d	file:
+NTHREAD	include/my_kmt.h	20;"	d
+POW	include/my_os.h	9;"	d
+PREBUILD	Makefile	/^PREBUILD := git initrd$/;"	m
+QEMU_FLAGS	Makefile	/^QEMU_FLAGS := -serial stdio -machine accel=kvm:tcg -drive format=raw,file=$(BINARY)$/;"	m
+RD_SIZE	include/devices.h	38;"	d
+SPRITE_BRK	include/devices.h	60;"	d
+SRCS	Makefile	/^SRCS           := framework\/main.c $(shell find -L .\/src\/ -name "*.c" -o -name "*.S")$/;"	m
+STK_SZ	include/my_kmt.h	19;"	d
+TERM_FONT	include/devices.h	108;"	d
+TEXTURE_H	include/devices.h	59;"	d
+TEXTURE_W	include/devices.h	58;"	d
+TTY_COOK_BUF_SZ	src/devices/tty/tty.c	3;"	d	file:
+_READY	include/my_kmt.h	/^    _READY = 0,$/;"	e	enum:__anon5
+_RUNNING	include/my_kmt.h	/^    _RUNNING,$/;"	e	enum:__anon5
+_SUSPEND	include/my_kmt.h	/^    _SUSPEND,$/;"	e	enum:__anon5
+__COMMON_H__	include/common.h	2;"	d
+__KERNEL_H__	framework/kernel.h	2;"	d
+__NANOS_H__	framework/nanos.h	2;"	d
+active	include/my_kmt.h	/^   int active;\/\/judge whether the sem is init$/;"	m	struct:semaphore
+alloc	framework/kernel.h	/^  void *(*alloc)(size_t size);$/;"	m	struct:__anon2
+alloc_lk	src/alloc.c	/^static struct spinlock alloc_lk,p_lk;$/;"	v	typeref:struct:spinlock	file:
+alloc_num	include/my_os.h	13;"	d
+alt	include/devices.h	/^  uint32_t ctrl: 1, alt: 1;$/;"	m	struct:input_event
+alt_down	include/devices.h	/^  int capslock, shift_down[2], ctrl_down[2], alt_down[2];$/;"	m	struct:__anon6
+big_alloc	src/alloc.c	/^static uintptr_t big_alloc(size_t size){\/\/already locked in kalloc$/;"	f	file:
+big_free	src/alloc.c	/^static void big_free(void * ptr){\/\/ptr is the m_header pointer to the aim $/;"	f	file:
+bmheader	include/my_os.h	/^    m_header *bmheader;$/;"	m	struct:l_header
+buf	include/devices.h	/^  char *buf, *end, *front, *rear;$/;"	m	struct:tty_queue
+buf	include/devices.h	/^  struct character *buf, *end, *cursor;$/;"	m	struct:__anon9	typeref:struct:__anon9::character
+capslock	include/devices.h	/^  int capslock, shift_down[2], ctrl_down[2], alt_down[2];$/;"	m	struct:__anon6
+ch	include/devices.h	/^  unsigned char ch;$/;"	m	struct:character
+character	include/devices.h	/^struct character {$/;"	s
+columns	include/devices.h	/^  int lines, columns, size;$/;"	m	struct:__anon9
+context	include/my_kmt.h	/^    _Context context;$/;"	m	struct:task
+cooked	include/devices.h	/^  sem_t lock, cooked;$/;"	m	struct:__anon9
+cpu	include/my_kmt.h	/^    struct mycpu *cpu;$/;"	m	struct:task	typeref:struct:task::mycpu
+cpu	include/my_os.h	/^    struct mycpu *cpu;$/;"	m	struct:spinlock	typeref:struct:spinlock::mycpu
+cpu_info	src/spinlock.c	/^struct mycpu cpu_info[8] = {$/;"	v	typeref:struct:mycpu
+create	framework/kernel.h	/^  int (*create)(task_t *task, const char *name, void (*entry)(void *arg), void *arg);$/;"	m	struct:__anon3
+create	src/alloc.c	/^static uintptr_t create(size_t size){\/\/need to alloc from heap$/;"	f	file:
+ctrl	include/devices.h	/^  uint32_t ctrl: 1, alt: 1;$/;"	m	struct:input_event
+ctrl_down	include/devices.h	/^  int capslock, shift_down[2], ctrl_down[2], alt_down[2];$/;"	m	struct:__anon6
+cur_task	include/my_kmt.h	38;"	d
+current	include/devices.h	/^  uint32_t current;$/;"	m	struct:display_info
+current_tasks	src/kmthread.c	/^struct task *current_tasks[NTHREAD];$/;"	v	typeref:struct:task
+cursor	include/devices.h	/^  struct character *buf, *end, *cursor;$/;"	m	struct:__anon9	typeref:struct:__anon9::
+data	include/devices.h	/^  uint32_t data: 16;$/;"	m	struct:input_event
+dev_create	src/devices/dev.c	/^static device_t *dev_create(size_t dev_size, const char* dev_name, int dev_id, devops_t *dev_ops) {$/;"	f	file:
+dev_init	src/devices/dev.c	/^static void dev_init() {$/;"	f	file:
+dev_lookup	src/devices/dev.c	/^device_t *dev_lookup(const char *name) {$/;"	f
+device	include/devices.h	/^struct device {$/;"	s
+device_t	framework/kernel.h	/^typedef struct device device_t;$/;"	t	typeref:struct:device
+devices	src/devices/dev.c	/^device_t *devices[0 DEVICES(DEV_CNT)];$/;"	v
+devops	framework/kernel.h	/^typedef struct devops {$/;"	s
+devops_t	framework/kernel.h	/^} devops_t;$/;"	t	typeref:struct:devops
+diffsize	include/my_os.h	10;"	d
+dirty	include/devices.h	/^  uint8_t *dirty;$/;"	m	struct:__anon9
+display	include/devices.h	/^  device_t *fbdev; int display;$/;"	m	struct:__anon9
+display	include/devices.h	/^  unsigned int display: 4;$/;"	m	struct:sprite
+display_info	include/devices.h	/^struct display_info {$/;"	s
+end	include/devices.h	/^  char *buf, *end, *front, *rear;$/;"	m	struct:tty_queue
+end	include/devices.h	/^  char *start, *end;$/;"	m	struct:__anon7
+end	include/devices.h	/^  struct character *buf, *end, *cursor;$/;"	m	struct:__anon9	typeref:struct:__anon9::
+entry	include/my_kmt.h	/^    void (*entry)(void *arg);$/;"	m	struct:task
+estart	src/alloc.c	/^ static uintptr_t estart;$/;"	v	file:
+event	include/my_kmt.h	/^    int event;$/;"	m	struct:HL
+event	src/devices/input/input.c	/^static struct input_event event(int ctrl, int alt, int data) {$/;"	f	file:
+event_sem	include/devices.h	/^  sem_t event_sem;$/;"	m	struct:__anon6
+events	include/devices.h	/^  struct input_event *events;$/;"	m	struct:__anon6	typeref:struct:__anon6::input_event
+fb_init	src/devices/video/video.c	/^int fb_init(device_t *dev) {$/;"	f
+fb_ops	src/devices/video/video.c	/^devops_t fb_ops = {$/;"	v
+fb_read	src/devices/video/video.c	/^ssize_t fb_read(device_t *dev, off_t offset, void *buf, size_t count) {$/;"	f
+fb_sem	src/devices/video/video.c	/^static sem_t fb_sem;$/;"	v	file:
+fb_t	include/devices.h	/^} fb_t;$/;"	t	typeref:struct:__anon8
+fb_write	src/devices/video/video.c	/^ssize_t fb_write(device_t *dev, off_t offset, const void *buf, size_t count) {$/;"	f
+fbdev	include/devices.h	/^  device_t *fbdev; int display;$/;"	m	struct:__anon9
+fence1	include/my_kmt.h	/^    uint8_t fence1[32];$/;"	m	struct:task
+fence2	include/my_kmt.h	/^    uint8_t fence2[32];$/;"	m	struct:task
+font_default	src/devices/video/fonts/default.c	/^unsigned char font_default[] = {$/;"	v
+font_load	src/devices/video/video.c	/^static void font_load(fb_t *fb, uint8_t *font) {$/;"	f	file:
+font_sans	src/devices/video/fonts/sans.c	/^unsigned char font_sans[] = {$/;"	v
+font_serif	src/devices/video/fonts/serif.c	/^unsigned char font_serif[] = {$/;"	v
+free	framework/kernel.h	/^  void (*free)(void *ptr);$/;"	m	struct:__anon2
+front	include/devices.h	/^  char *buf, *end, *front, *rear;$/;"	m	struct:tty_queue
+front	include/devices.h	/^  int front, rear;$/;"	m	struct:__anon6
+handler	include/my_kmt.h	/^    handler_t handler;$/;"	m	struct:HL
+handler_t	framework/kernel.h	/^typedef _Context *(*handler_t)(_Event, _Context *);$/;"	t
+height	include/devices.h	/^  uint32_t width, height;$/;"	m	struct:display_info
+hello	src/os.c	/^ static void hello() {$/;"	f	file:
+holding	src/spinlock.c	/^int holding(struct spinlock *lk){$/;"	f
+id	include/devices.h	/^  int id;$/;"	m	struct:device
+id	include/my_os.h	/^     int id;$/;"	m	struct:mycpu
+info	include/devices.h	/^  struct display_info *info;$/;"	m	struct:__anon8	typeref:struct:__anon8::display_info
+init	framework/kernel.h	/^  int (*init)(device_t *dev);$/;"	m	struct:devops
+init	framework/kernel.h	/^  void (*init)();$/;"	m	struct:__anon1
+init	framework/kernel.h	/^  void (*init)();$/;"	m	struct:__anon2
+init	framework/kernel.h	/^  void (*init)();$/;"	m	struct:__anon3
+init	framework/kernel.h	/^  void (*init)();$/;"	m	struct:__anon4
+initrd_end	src/devices/ramdisk/initrd.S	/^initrd_end:/;"	l
+initrd_start	src/devices/ramdisk/initrd.S	/^initrd_start:$/;"	l
+input_event	include/devices.h	/^struct input_event {$/;"	s
+input_init	src/devices/input/input.c	/^static int input_init(device_t *dev) {$/;"	f	file:
+input_keydown	src/devices/input/input.c	/^void input_keydown(device_t *dev, int code) {$/;"	f
+input_notify	src/devices/input/input.c	/^static _Context *input_notify(_Event ev, _Context *context) {$/;"	f	file:
+input_ops	src/devices/input/input.c	/^devops_t input_ops = {$/;"	v
+input_read	src/devices/input/input.c	/^static ssize_t input_read(device_t *dev, off_t offset, void *buf, size_t count) {$/;"	f	file:
+input_t	include/devices.h	/^} input_t;$/;"	t	typeref:struct:__anon6
+input_task	src/devices/input/input.c	/^void input_task(void *args) {$/;"	f
+input_write	src/devices/input/input.c	/^static ssize_t input_write(device_t *dev, off_t offset, const void *buf, size_t count) {$/;"	f	file:
+intena	include/my_os.h	/^     int intena;$/;"	m	struct:mycpu
+kalloc	src/alloc.c	/^static void *kalloc(size_t size) {$/;"	f	file:
+keymap	src/devices/input/keymaps.c	/^char keymap[256] = {$/;"	v
+keymap_shift	src/devices/input/keymaps.c	/^char keymap_shift[256] = {$/;"	v
+kfree	src/alloc.c	/^static void kfree(void *ptr) {$/;"	f	file:
+kmt_context_save	src/kmthread.c	/^_Context * kmt_context_save(_Event ev, _Context * context){$/;"	f
+kmt_context_switch	src/kmthread.c	/^_Context * kmt_context_switch(_Event ev, _Context * context){$/;"	f
+kmt_create	src/kmthread.c	/^int kmt_create(task_t *task, const char *name, void (*entry)(void *arg), void *arg){$/;"	f
+kmt_init	src/kmthread.c	/^void kmt_init(){$/;"	f
+kmt_teardown	src/kmthread.c	/^void kmt_teardown(task_t *task){$/;"	f
+l_header	include/my_os.h	/^typedef struct l_header{$/;"	s
+l_header	include/my_os.h	/^}l_header;$/;"	t	typeref:struct:l_header
+lines	include/devices.h	/^  int lines, columns, size;$/;"	m	struct:__anon9
+lock	include/devices.h	/^  sem_t lock, cooked;$/;"	m	struct:__anon9
+lock	include/devices.h	/^  spinlock_t lock;$/;"	m	struct:__anon6
+lock	include/my_kmt.h	/^   struct spinlock lock;$/;"	m	struct:semaphore	typeref:struct:semaphore::spinlock
+locked	include/my_os.h	/^    intptr_t locked;$/;"	m	struct:spinlock
+lsize	include/my_os.h	/^    size_t lsize;$/;"	m	struct:l_header
+m_header	include/my_os.h	/^typedef struct m_header{$/;"	s
+m_header	include/my_os.h	/^}m_header;$/;"	t	typeref:struct:m_header
+main	framework/main.c	/^int main() {$/;"	f
+metadata	include/devices.h	/^  uint32_t metadata;$/;"	m	struct:character
+msize	include/my_os.h	/^   size_t msize;\/\/useful when kfree$/;"	m	struct:m_header
+my_spinlock	src/spinlock.c	/^void my_spinlock(struct spinlock *lk){$/;"	f
+my_spinlock_init	src/spinlock.c	/^void my_spinlock_init(struct spinlock *lk,const char *name){$/;"	f
+my_spinunlock	src/spinlock.c	/^void my_spinunlock(struct spinlock *lk){$/;"	f
+mycpu	include/my_os.h	/^struct mycpu{$/;"	s
+name	include/devices.h	/^  const char *name;$/;"	m	struct:device
+name	include/my_kmt.h	/^    const char *name;$/;"	m	struct:task
+name	include/my_kmt.h	/^   const char* name;$/;"	m	struct:semaphore
+name	include/my_os.h	/^    const char *name;$/;"	m	struct:spinlock
+ncli	include/my_os.h	/^     int ncli;$/;"	m	struct:mycpu
+next	include/my_kmt.h	/^    struct HL* next;$/;"	m	struct:HL	typeref:struct:HL::HL
+next	include/my_kmt.h	/^    struct task *next;$/;"	m	struct:task	typeref:struct:task::task
+next	include/my_os.h	/^    struct l_header *next, *prev;$/;"	m	struct:l_header	typeref:struct:l_header::l_header
+next	include/my_os.h	/^   struct m_header *next,*prev;$/;"	m	struct:m_header	typeref:struct:m_header::m_header
+num_displays	include/devices.h	/^  uint32_t num_displays;$/;"	m	struct:display_info
+num_sprites	include/devices.h	/^  uint32_t num_textures, num_sprites;$/;"	m	struct:display_info
+num_textures	include/devices.h	/^  uint32_t num_textures, num_sprites;$/;"	m	struct:display_info
+off_t	framework/nanos.h	/^typedef intptr_t off_t;$/;"	t
+on_irq	framework/kernel.h	/^  void (*on_irq)(int seq, int event, handler_t handler);$/;"	m	struct:__anon1
+ops	include/devices.h	/^  devops_t *ops;$/;"	m	struct:device
+os_init	src/os.c	/^static void os_init() {$/;"	f	file:
+os_on_irq	src/os.c	/^static void os_on_irq(int seq, int event, handler_t handler) {$/;"	f	file:
+os_run	src/os.c	/^static void os_run() {$/;"	f	file:
+os_trap	src/os.c	/^static _Context *os_trap(_Event ev, _Context *context) {$/;"	f	file:
+p_lk	src/alloc.c	/^static struct spinlock alloc_lk,p_lk;$/;"	v	typeref:struct:	file:
+panic	include/devices.h	/^static inline void panic(const char *s) { printf("%s\\n", s); _halt(1); }$/;"	f
+pid_t	framework/nanos.h	/^typedef int32_t pid_t;$/;"	t
+pixels	include/devices.h	/^  uint32_t pixels[TEXTURE_W * TEXTURE_H];$/;"	m	struct:texture
+pm_end	src/alloc.c	/^static uintptr_t pm_start, pm_end;$/;"	v	file:
+pm_now	src/alloc.c	/^ static uintptr_t pm_now;$/;"	v	file:
+pm_start	src/alloc.c	/^static uintptr_t pm_start, pm_end;$/;"	v	file:
+pmm_init	src/alloc.c	/^static void pmm_init() {$/;"	f	file:
+pop_event	src/devices/input/input.c	/^static struct input_event pop_event(input_t *in) {$/;"	f	file:
+popcli	src/spinlock.c	/^void popcli(){$/;"	f
+prev	include/my_os.h	/^    struct l_header *next, *prev;$/;"	m	struct:l_header	typeref:struct:l_header::
+prev	include/my_os.h	/^   struct m_header *next,*prev;$/;"	m	struct:m_header	typeref:struct:m_header::
+ptr	include/devices.h	/^  void *ptr;$/;"	m	struct:device
+push_event	src/devices/input/input.c	/^static void push_event(input_t *in, struct input_event ev) {$/;"	f	file:
+pushcli	src/spinlock.c	/^void pushcli(){$/;"	f
+queue	include/devices.h	/^  struct tty_queue queue;$/;"	m	struct:__anon9	typeref:struct:__anon9::tty_queue
+rd_init	src/devices/ramdisk/ramdisk.c	/^int rd_init(device_t *dev) {$/;"	f
+rd_ops	src/devices/ramdisk/ramdisk.c	/^devops_t rd_ops = {$/;"	v
+rd_read	src/devices/ramdisk/ramdisk.c	/^ssize_t rd_read(device_t *dev, off_t offset, void *buf, size_t count) {$/;"	f
+rd_t	include/devices.h	/^} rd_t;$/;"	t	typeref:struct:__anon7
+rd_write	src/devices/ramdisk/ramdisk.c	/^ssize_t rd_write(device_t *dev, off_t offset, const void *buf, size_t count) {$/;"	f
+read	framework/kernel.h	/^  ssize_t (*read)(device_t *dev, off_t offset, void *buf, size_t count);$/;"	m	struct:devops
+rear	include/devices.h	/^  char *buf, *end, *front, *rear;$/;"	m	struct:tty_queue
+rear	include/devices.h	/^  int front, rear;$/;"	m	struct:__anon6
+recycle	src/alloc.c	/^ static l_header* recycle;$/;"	v	file:
+run	framework/kernel.h	/^  void (*run)();$/;"	m	struct:__anon1
+sem_init	framework/kernel.h	/^  void (*sem_init)(sem_t *sem, const char *name, int value);$/;"	m	struct:__anon3
+sem_kbdirq	src/devices/input/input.c	/^sem_t sem_kbdirq;$/;"	v
+sem_signal	framework/kernel.h	/^  void (*sem_signal)(sem_t *sem);$/;"	m	struct:__anon3
+sem_t	framework/kernel.h	/^typedef struct semaphore sem_t;$/;"	t	typeref:struct:semaphore
+sem_wait	framework/kernel.h	/^  void (*sem_wait)(sem_t *sem);$/;"	m	struct:__anon3
+semaphore	include/my_kmt.h	/^struct semaphore{$/;"	s
+seminit	src/sem.c	/^void seminit(sem_t *sem, const char *name, int value){$/;"	f
+semsignal	src/sem.c	/^void semsignal(sem_t *sem){$/;"	f
+semwait	src/sem.c	/^void semwait(sem_t *sem){$/;"	f
+seq	include/my_kmt.h	/^    int seq;$/;"	m	struct:HL
+shift_down	include/devices.h	/^  int capslock, shift_down[2], ctrl_down[2], alt_down[2];$/;"	m	struct:__anon6
+size	include/devices.h	/^  int lines, columns, size;$/;"	m	struct:__anon9
+smaddr	include/my_os.h	/^   uintptr_t smaddr;\/\/the begin of usable mm without block and header$/;"	m	struct:m_header
+spin_init	framework/kernel.h	/^  void (*spin_init)(spinlock_t *lk, const char *name);$/;"	m	struct:__anon3
+spin_lock	framework/kernel.h	/^  void (*spin_lock)(spinlock_t *lk);$/;"	m	struct:__anon3
+spin_unlock	framework/kernel.h	/^  void (*spin_unlock)(spinlock_t *lk);$/;"	m	struct:__anon3
+spinlock	include/my_os.h	/^struct spinlock{$/;"	s
+spinlock_t	framework/kernel.h	/^typedef struct spinlock spinlock_t;$/;"	t	typeref:struct:spinlock
+sprite	include/devices.h	/^struct sprite {$/;"	s
+sprites	include/devices.h	/^  struct sprite *sprites;$/;"	m	struct:__anon8	typeref:struct:__anon8::sprite
+ssize_t	framework/nanos.h	/^typedef intptr_t ssize_t;$/;"	t
+stack	include/my_kmt.h	/^    uint8_t stack[STK_SZ];$/;"	m	struct:task
+start	include/devices.h	/^  char *start, *end;$/;"	m	struct:__anon7
+status	include/my_kmt.h	/^    int status;$/;"	m	struct:task
+task	include/my_kmt.h	/^struct task{$/;"	s
+task_t	framework/kernel.h	/^typedef struct task task_t;$/;"	t	typeref:struct:task
+taskhead	src/kmthread.c	/^static struct task *taskhead;$/;"	v	typeref:struct:task	file:
+tasklock	src/kmthread.c	/^spinlock_t tasklock = {0,"TaskCreateSwitch",NULL};$/;"	v
+teardown	framework/kernel.h	/^  void (*teardown)(task_t *task);$/;"	m	struct:__anon3
+texture	include/devices.h	/^  uint16_t texture, x, y;$/;"	m	struct:sprite
+texture	include/devices.h	/^struct texture {$/;"	s
+texture_fill	src/devices/video/video.c	/^static void texture_fill(struct texture *tx, int top, uint8_t *bits, uint32_t fg, uint32_t bg) {$/;"	f	file:
+textures	include/devices.h	/^  struct texture *textures;$/;"	m	struct:__anon8	typeref:struct:__anon8::texture
+trap	framework/kernel.h	/^  _Context *(*trap)(_Event ev, _Context *context);$/;"	m	struct:__anon1
+tty_cook	src/devices/tty/tty.c	/^static int tty_cook(tty_t *tty, char ch) {$/;"	f	file:
+tty_defaultch	src/devices/tty/tty.c	/^struct character tty_defaultch() {$/;"	f
+tty_enqueue	src/devices/tty/tty.c	/^static void tty_enqueue(struct tty_queue *q, char ch) {$/;"	f	file:
+tty_init	src/devices/tty/tty.c	/^int tty_init(device_t *dev) {$/;"	f
+tty_mark	src/devices/tty/tty.c	/^static void tty_mark(tty_t *tty, struct character *ch) {$/;"	f	file:
+tty_mark_all	src/devices/tty/tty.c	/^static void tty_mark_all(tty_t *tty) {$/;"	f	file:
+tty_mark_line	src/devices/tty/tty.c	/^static void tty_mark_line(tty_t *tty, struct character *ch) {$/;"	f	file:
+tty_ops	src/devices/tty/tty.c	/^devops_t tty_ops = {$/;"	v
+tty_pop_back	src/devices/tty/tty.c	/^static int tty_pop_back(struct tty_queue *q) {$/;"	f	file:
+tty_putc	src/devices/tty/tty.c	/^static void tty_putc(tty_t *tty, char ch) {$/;"	f	file:
+tty_queue	include/devices.h	/^struct tty_queue {$/;"	s
+tty_read	src/devices/tty/tty.c	/^ssize_t tty_read(device_t *dev, off_t offset, void *buf, size_t count) {$/;"	f
+tty_render	src/devices/tty/tty.c	/^static void tty_render(tty_t *tty) {$/;"	f	file:
+tty_t	include/devices.h	/^} tty_t;$/;"	t	typeref:struct:__anon9
+tty_task	src/devices/tty/tty.c	/^void tty_task(void *arg) {$/;"	f
+tty_upd_backsp	src/devices/tty/tty.c	/^static inline void tty_upd_backsp(tty_t *tty) {$/;"	f	file:
+tty_upd_cr	src/devices/tty/tty.c	/^static inline void tty_upd_cr(tty_t *tty) {$/;"	f	file:
+tty_upd_lf	src/devices/tty/tty.c	/^static inline void tty_upd_lf(tty_t *tty) {$/;"	f	file:
+tty_upd_putc	src/devices/tty/tty.c	/^static inline void tty_upd_putc(tty_t *tty, char ch) {$/;"	f	file:
+tty_upd_scrollup	src/devices/tty/tty.c	/^static void tty_upd_scrollup(tty_t *tty) {$/;"	f	file:
+tty_write	src/devices/tty/tty.c	/^ssize_t tty_write(device_t *dev, off_t offset, const void *buf, size_t count) {$/;"	f
+unitsize	include/my_os.h	12;"	d
+using	src/alloc.c	/^ static m_header* using;$/;"	v	file:
+value	include/my_kmt.h	/^   int value;$/;"	m	struct:semaphore
+width	include/devices.h	/^  uint32_t width, height;$/;"	m	struct:display_info
+wl	include/my_kmt.h	/^   struct task *wl[NTHREAD];\/\/waitinglist of sem$/;"	m	struct:semaphore	typeref:struct:semaphore::task
+wlleft	include/my_kmt.h	/^   int wlleft,wlright;$/;"	m	struct:semaphore
+wlright	include/my_kmt.h	/^   int wlleft,wlright;$/;"	m	struct:semaphore
+write	framework/kernel.h	/^  ssize_t (*write)(device_t *dev, off_t offset, const void *buf, size_t count);$/;"	m	struct:devops
+x	include/devices.h	/^  uint16_t texture, x, y;$/;"	m	struct:sprite
+y	include/devices.h	/^  uint16_t texture, x, y;$/;"	m	struct:sprite
+z	include/devices.h	/^  unsigned int z: 12;$/;"	m	struct:sprite
