@@ -1,7 +1,8 @@
+#ifndef __OS_H__
+#define __OS_H__
 #include <stdint.h>
 #include <am.h>
 
-//#define DEBUG
 #define CORRECTNESS_FIRST
 //#define MYSTI() __asm__ __volatile__("sti":::"memory")
 //#define MYCLI() __asm__ __volatile__("cli":::"memory")
@@ -36,7 +37,8 @@ void my_spinlock(struct spinlock *lk);
 void my_spinunlock(struct spinlock *lk);
 void my_spinlock_init(struct spinlock *lk,const char *name);
 
-extern struct spinlock p_lk;
+extern struct spinlock plock;
+
 
 #ifndef CORRECTNESS_FIRST
 /*typedef struct BLOCK{
@@ -65,4 +67,4 @@ typedef struct l_header{
 
 #endif
 
-
+#endif

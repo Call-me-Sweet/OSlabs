@@ -67,19 +67,74 @@ void echo_task(void *name){
 }
 #endif
 
+extern filesystem_t *devfs;
+extern filesystem_t *blkfs;
+extern filesystem_t *procfs;
+spinlock_t plock = {0,"plock",NULL};
+extern void shell_thread(void*args);
+#ifdef L3test
+void l3test(void* args){
+    int caces = vfs->access("/proc/cpuinfo",F_OK);
+     my_spinlock(&plock);
+     logq("cpu %d,aces %d",_cpu(),caces);
+     my_spinunlock(&plock);
 
+     int copen = vfs->open("/proc/meminfo",0);
+     my_spinlock(&plock);
+     logy("cpu %d, copen %d",_cpu(),copen);
+     my_spinunlock(&plock);
+  
+     int ss[128];
+     memset(ss,0,sizeof(ss));
+     int rbyte = vfs->read(copen,(void*)ss,sizeof(ss));
+     my_spinlock(&plock);
+     logy("cpu %d, rbyte %d, ss %s",_cpu(),rbyte,ss);
+     my_spinunlock(&plock);
+
+     while(1); 
+}   
+#endif
+
+extern struct Proc hgproc;
 static void os_init() {
   pmm->init();
   handlehead = NULL;
   kmt->init();
-  for(int i = 0; i < _ncpu(); ++i)
-     kmt->create(pmm->alloc(sizeof(task_t)), "zombie", zombie, NULL);
-#ifdef TTYTEST
+  //
   dev->init();
+  vfs->init();
+  int pidcnt = 1;
+  for(int i = 0; i < _ncpu(); ++i)
+  {
+     kmt->create(pmm->alloc(sizeof(task_t)), "zombie", zombie, NULL);
+     char buf[128];
+     memset(buf,0,sizeof(buf));
+     sprintf(buf,"/proc/%d",pidcnt);
+     vfs->open(buf,O_CREAT|O_RDWR);
+     memset(buf,0,sizeof(buf));
+     sprintf(buf,"ThreadName: zombie%d.\nCreateTime: %d",i,uptime());
+     memcpy(hgproc.block[pidcnt+2],buf,strlen(buf)+1);
+     pidcnt++;
+  }
+#ifdef TTYTEST
   kmt->create(pmm->alloc(sizeof(task_t)), "print1", echo_task,"tty1");
   kmt->create(pmm->alloc(sizeof(task_t)), "print2", echo_task,"tty2");
   kmt->create(pmm->alloc(sizeof(task_t)), "print",echo_task,"tty3");
   kmt->create(pmm->alloc(sizeof(task_t)), "print",echo_task,"tty4");
+#endif
+
+#ifdef SHELL 
+  for(int i = 0; i< 4; ++i){
+      kmt->create(pmm->alloc(sizeof(task_t)),"shell_thread",shell_thread,(void*)(i+1));
+      char buf[128];
+      memset(buf,0,sizeof(buf));
+      sprintf(buf,"/proc/%d",pidcnt);
+      vfs->open(buf,O_CREAT|O_RDWR);
+      memset(buf,0,sizeof(buf));
+      sprintf(buf,"ThreadName:    shell_thread%d.\nCreateTime:   %d",i,uptime());
+      memcpy(hgproc.block[pidcnt+2],buf,strlen(buf)+1);
+      pidcnt++;
+  }
 #endif
 
 #ifdef PANDC
@@ -164,7 +219,6 @@ static void os_run() {
 }
 
 
-struct spinlock p_lk = {0, "plk", NULL};
 
 static _Context *os_trap(_Event ev, _Context *context) {
    
@@ -175,22 +229,22 @@ static _Context *os_trap(_Event ev, _Context *context) {
 
     if(ev.event == _EVENT_ERROR){
         //sth wrong
-        my_spinlock(&p_lk);
+        my_spinlock(&plock);
         printf("curcpu:%d\n",_cpu());
         printf("event:%d: %s",ev.event,ev.msg);
         printf("   cause by %p and %p\n",ev.cause,ev.ref);
         printf("name :%s\n",cur_task->name);
         assert(0);
-        my_spinunlock(&p_lk);
+        my_spinunlock(&plock);
         return context;
     }
    
     // the I/O may intr the os_trap and again come here repeatly get the same lk;
 #ifdef DEBUG
-     my_spinlock(&p_lk);
+     my_spinlock(&plock);
      printf("begins: %d\n",_cpu());
      printf("switch from:%s\n",cur_task->name);
-     my_spinunlock(&p_lk);
+     my_spinunlock(&plock);
 #endif
 
     _Context *ret_context = NULL;
@@ -213,10 +267,10 @@ static _Context *os_trap(_Event ev, _Context *context) {
     heldHL = holding(&HLlock);
     if(heldHL) my_spinunlock(&HLlock);
 #ifdef DEBUG
-    my_spinlock(&p_lk);
+    my_spinlock(&plock);
     printf("switch to:%s\n",cur_task->name);
     printf("end\n");
-    my_spinunlock(&p_lk);
+    my_spinunlock(&plock);
     
 #endif
     heldtrap = holding(&traplock);
@@ -256,7 +310,7 @@ static void os_on_irq(int seq, int event, handler_t handler) {
        handlehead = newhandler;
    assert(handlehead);
 #ifdef DEBUG
-   my_spinlock(&p_lk);
+   my_spinlock(&plock);
    ind = handlehead;
    while(ind != NULL){
        printf("ev:%d seq:%d\n",ind->event,ind->seq);
@@ -264,7 +318,7 @@ static void os_on_irq(int seq, int event, handler_t handler) {
    }
 
    printf("\n");
-   my_spinunlock(&p_lk);
+   my_spinunlock(&plock);
 #endif
   // held = holding(&HLlock);
   // if(held) my_spinunlock(&HLlock);

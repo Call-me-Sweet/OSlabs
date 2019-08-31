@@ -36,10 +36,10 @@ static uintptr_t create(size_t size){//need to alloc from heap
     ret = pm_now;
     pm_now += (LEN(l_header) + alloc_num*size);//alloc 4 
     if(pm_now > pm_end){
-        my_spinlock(&p_lk);
+        my_spinlock(&plock);
         printf("The heap is not enough!\n");
         assert(0);
-        my_spinunlock(&p_lk);
+        my_spinunlock(&plcok);
     }
     return ret;
 } 
@@ -213,12 +213,13 @@ static void *kalloc(size_t size) {
     estart += size;
   
     if(estart > pm_end){
-        my_spinlock(&p_lk);
+        my_spinlock(&plock);
         printf("Heap isnot enough!\n");
         assert(0);
-        my_spinunlock(&p_lk);
+        my_spinunlock(&plock);
     }
     
+    memset((void*)(estart-size),0,size);
     my_spinunlock(&alloc_lk);
     return (void*) (estart - size);
 #else 
@@ -226,6 +227,8 @@ static void *kalloc(size_t size) {
     my_spinlock(&alloc_lk);
     //printf("heap_start:%d\n",pm_start);
     void * ret = (void*)big_alloc(size);
+    
+    memset(ret,0,size);
     my_spinunlock(&alloc_lk);
     return ret;
 #endif
@@ -241,10 +244,10 @@ static void kfree(void *ptr) {
     assert(tmph);
      
     if(using == NULL){
-         my_spinlock(&p_lk);
+         my_spinlock(&plock);
          printf("You cannot free a null ptr!\n");
          assert(0);
-         my_spinunlock(&p_lk);
+         my_spinunlock(&plock);
     }
 
     m_header *mptr = using;
@@ -255,10 +258,10 @@ static void kfree(void *ptr) {
     }
         
     if(mptr == NULL){
-        my_spinlock(&p_lk);
+        my_spinlock(&plock);
         printf("You cannot free the addr already free\n");
        // assert(0);
-        my_spinunlock(&p_lk);
+        my_spinunlock(&plock);
         my_spinunlock(&alloc_lk);
         return;
     }

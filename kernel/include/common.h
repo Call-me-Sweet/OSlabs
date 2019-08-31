@@ -5,4 +5,12 @@
 #include <nanos.h>
 #include <x86.h>
 
+#define LOG
+
+#define TODO() do {\
+   logr("You need to finish!"); \
+   assert(0);\
+} while(0);
+
+
 #endif

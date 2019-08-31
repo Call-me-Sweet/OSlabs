@@ -49,9 +49,9 @@ void semwait(sem_t *sem){
     my_spinlock(&sem->lock);
 
 #ifdef DEBUG
-    my_spinlock(&p_lk);
+    my_spinlock(&plock);
     printf("wait!\n");
-    my_spinunlock(&p_lk);
+    my_spinunlock(&plock);
 #endif
     
     while(sem->value <= 0){
@@ -81,9 +81,9 @@ void semsignal(sem_t *sem){
 
     sem->value++;
 #ifdef DEBUG
-    my_spinlock(&p_lk);
+    my_spinlock(&plock);
     printf("signal!\n");
-    my_spinunlock(&p_lk);
+    my_spinunlock(&plock);
 #endif
     if(sem->wl[sem->wlleft] != NULL){//there exits waiting task
        sem->wl[sem->wlleft]->status = _READY;

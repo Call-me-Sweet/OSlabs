@@ -9,6 +9,7 @@ int rd_init(device_t *dev) {
     rd->end   = &initrd_end;
   } else {
     char *space = pmm->alloc(RD_SIZE);
+    memset(space,0,RD_SIZE);
     rd->start = space;
     rd->end   = space + RD_SIZE;
   }

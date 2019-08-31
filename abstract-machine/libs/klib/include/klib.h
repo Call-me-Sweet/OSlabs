@@ -63,6 +63,46 @@ int sprintf(char* out, const char* format, ...);
 int snprintf(char* s, size_t n, const char* format, ...);
 int vsprintf(char *str, const char *format, va_list ap);
 
+
+//log
+#ifdef LOG 
+#define logp(format, ...)\
+   printf("\33[1;35m[%s,%d,%s]" format "\33[0m\n", \
+           __FILE__, __FILE__, __func__, ## __VA_ARGS__)
+
+#define logb(format, ...)\
+   printf("\33[1;34m[%s,%d,%s]" format "\33[0m\n", \
+           __FILE__, __FILE__, __func__, ## __VA_ARGS__)
+
+#define logr(format, ...)\
+   printf("\33[1;32m[%s,%d,%s]" format "\33[0m\n", \
+           __FILE__, __FILE__, __func__, ## __VA_ARGS__)
+
+#define logy(format, ...)\
+   printf("\33[1;33m[%s,%d,%s]" format "\33[0m\n", \
+           __FILE__, __FILE__, __func__, ## __VA_ARGS__)
+
+#define logg(format, ...)\
+   printf("\33[1;31m[%s,%d,%s]" format "\33[0m\n", \
+           __FILE__, __FILE__, __func__, ## __VA_ARGS__)
+
+#define logq(format, ...)\
+   printf("\33[1;36m[%s,%d,%s]" format "\33[0m\n", \
+           __FILE__, __FILE__, __func__, ## __VA_ARGS__)
+
+#define logw(format, ...)\
+   printf("\33[1;37m[%s,%d,%s]" format "\33[0m\n", \
+           __FILE__, __FILE__, __func__, ## __VA_ARGS__)
+#else
+#define logp(format, ...)
+#define logb(format, ...)
+#define logg(format, ...)
+#define logq(format, ...)
+#define logw(format, ...)
+#define logy(format, ...)
+#define logr(format, ...)
+#endif
+
 // assert.h
 #ifdef NDEBUG
   #define assert(ignore) ((void)0)

@@ -1,13 +1,17 @@
+#ifndef __KMT_H__
+#define __KMT_H__
 #include <stdint.h>
 #include <common.h>
 #include <klib.h>
 #include <my_os.h>
+#include <vfs.h>
 
 //#define CHARCHECK
 //#define PANDC
 //#define TTYTEST
 //#define DEBUG
 
+//#define L3TEST
 // ==============================HandlerList==========================
 
 typedef struct HL{
@@ -42,6 +46,9 @@ struct task{
     struct mycpu *cpu;
     int status;
     void (*entry)(void *arg);
+    
+    file_t *fildes[NFILE];
+
     uint8_t fence1[32];
     uint8_t stack[STK_SZ];
     uint8_t fence2[32];
@@ -78,4 +85,4 @@ void seminit(sem_t *sem, const char *name, int value);
 void semwait(sem_t *sem);
 void semsignal(sem_t *sem);
 
-
+#endif

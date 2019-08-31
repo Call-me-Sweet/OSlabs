@@ -52,9 +52,9 @@ _Context * kmt_context_switch(_Event ev, _Context * context){
      assert(tn != 0);
      for(int ind = (cur_task->id + 1) % tn; ; ind = (ind+1) % tn){
 #ifdef DEBUG
-         my_spinlock(&p_lk);
+         my_spinlock(&plock);
          printf("task: %s:   %d\n",tl[_cpu()].list[ind]->name,tl[_cpu()].list[ind]->status);
-         my_spinunlock(&p_lk);
+         my_spinunlock(&plock);
 #endif
       //   printf("ind %d\n",ind); 
          if(tl[_cpu()].list[ind]->status == _READY){
@@ -204,7 +204,10 @@ int kmt_create(task_t *task, const char *name, void (*entry)(void *arg), void *a
 
      memset(task->fence1,0xcc,sizeof(task->fence1));
      memset(task->fence2,0xcc,sizeof(task->fence2));
-     
+    
+     for(int i = 0 ; i < NFILE; ++i)
+         task->fildes[i] = NULL;
+
      my_spinlock(&tasklock);
      //insert this task into tasklist
    
@@ -215,7 +218,7 @@ int kmt_create(task_t *task, const char *name, void (*entry)(void *arg), void *a
      tl[tidcnt].tasknum++;
      
 #ifdef DEBUG
-     my_spinlock(&p_lk);
+     my_spinlock(&plock);
     /* struct task* ind = taskhead;
      while(ind != NULL){
          printf("%s:\n",ind->name);
@@ -228,7 +231,7 @@ int kmt_create(task_t *task, const char *name, void (*entry)(void *arg), void *a
      }
     
      printf("\n");
-     my_spinunlock(&p_lk);
+     my_spinunlock(&plock);
 #endif
 
      tidcnt = (tidcnt + 1) % _ncpu();
@@ -240,6 +243,8 @@ int kmt_create(task_t *task, const char *name, void (*entry)(void *arg), void *a
 
 void kmt_teardown(task_t *task){
     //no dynamic alloc
+    panic("TODO!");
+    assert(0);
     return;
 }
 
